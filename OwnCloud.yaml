@@ -1,0 +1,122 @@
+name: owncloud
+services:
+  owncloud:
+    cpu_shares: 50
+    command:
+      - /usr/bin/owncloud
+      - server
+    deploy:
+      resources:
+        limits:
+          memory: 15989M
+    environment:
+      - OWNCLOUD_ADMIN_USERNAME=admin
+      - OWNCLOUD_ALLOW_USER_TO_CHANGE_DISPLAY_NAME=true
+      - OWNCLOUD_CROND_ENABLED=true
+      - OWNCLOUD_CROND_SCHEDULE=*/1 * * * *
+      - OWNCLOUD_FILES_EXTERNAL_ALLOW_NEW_LOCAL=true
+      - OWNCLOUD_TRUSTED_DOMAINS=localhost
+      - PGID=1000
+      - PUID=1000
+      - TZ=Etc/UTC
+      - UMASK=002
+    image: owncloud/server:latest
+    labels:
+      icon: https://e7.pngegg.com/pngimages/321/860/png-clipart-cloud-icon-computer-circle-font-apps-owncloud-computer-wallpaper-android.png
+    ports:
+      - target: 8080
+        published: "8080"
+        protocol: tcp
+    privileged: true
+    restart: always
+    volumes:
+      - type: bind
+        source: /DATA/Media
+        target: /mnt/data/Media
+      - type: bind
+        source: /DATA/Documents
+        target: /mnt/data/Documents
+      - type: bind
+        source: /DATA/Downloads
+        target: /mnt/data/Downloads
+      - type: bind
+        source: /DATA/Gallery
+        target: /mnt/data/Gallery
+    x-casaos:
+      envs:
+        - container: TZ
+          description:
+            en_us: ""
+        - container: PUID
+          description:
+            en_us: ""
+        - container: PGID
+          description:
+            en_us: ""
+        - container: OWNCLOUD_TRUSTED_DOMAINS
+          description:
+            en_us: ""
+        - container: OWNCLOUD_ALLOW_USER_TO_CHANGE_DISPLAY_NAME
+          description:
+            en_us: ""
+        - container: OWNCLOUD_ADMIN_USERNAME
+          description:
+            en_us: ""
+        - container: OWNCLOUD_CROND_ENABLED
+          description:
+            en_us: ""
+        - container: OWNCLOUD_CROND_SCHEDULE
+          description:
+            en_us: ""
+        - container: OWNCLOUD_FILES_EXTERNAL_ALLOW_NEW_LOCAL
+          description:
+            en_us: ""
+        - container: UMASK
+          description:
+            en_us: ""
+      ports:
+        - container: "8080"
+          description:
+            en_us: ""
+      volumes:
+        - container: /mnt/data/Media
+          description:
+            en_us: ""
+        - container: /mnt/data/Documents
+          description:
+            en_us: ""
+        - container: /mnt/data/Downloads
+          description:
+            en_us: ""
+        - container: /mnt/data/Gallery
+          description:
+            en_us: ""
+    devices: []
+    cap_add: []
+    network_mode: bridge
+    container_name: ""
+x-casaos:
+  architectures:
+    - amd64
+  author: CasaOS User
+  category: unknown
+  description:
+    en_us: ""
+  developer: unknown
+  hostname: ""
+  icon: https://e7.pngegg.com/pngimages/321/860/png-clipart-cloud-icon-computer-circle-font-apps-owncloud-computer-wallpaper-android.png
+  index: /
+  main: owncloud
+  port_map: "8080"
+  scheme: http
+  store_app_id: owncloud
+  tagline:
+    en_us: This is a compose app converted from a legacy app (CasaOS v0.4.3 or
+      earlier)
+  thumbnail: ""
+  tips:
+    custom: This is a compose app converted from a legacy app (CasaOS v0.4.3 or
+      earlier)
+  title:
+    custom: ""
+    en_us: OwnCloud
