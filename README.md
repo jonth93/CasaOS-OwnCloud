@@ -15,5 +15,7 @@ Mouse over the app icon and click the three dots then "Settings"
 
 ![image](https://github.com/jonth93/CasaOS-OwnCloud/assets/42115727/af6f5e9b-d2a4-4a48-bdd1-73dca8423d2a)
 
+These are the volumes I've left as part of the install.
+
 ![image](https://github.com/jonth93/CasaOS-OwnCloud/assets/42115727/4b99b124-f847-4f27-bc19-3044a78517d7)
 
